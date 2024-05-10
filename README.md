@@ -33,8 +33,9 @@ AWSアカウントにログインし，使用したいリージョンに切り�
 CloudShellのコンソールで，下記のコマンドを１行ずつ実行する．
 
 ```sh
-git clone https://github.com/langgenius/dify-ai-on-amazon-lightsail.git
-cd dify-ai-on-amazon-lightsail
+git clone https://github.com/rikrikurik/cdk-dify-on-lightsail.git
+cd cdk-dify-on-lightsail
+npm i
 cdk bootstrap
 cdk deploy
 ```
@@ -65,6 +66,8 @@ cdk deploy
 ![CloudFormationのページを開く](doc/Delete01-Open-CloudFormation.png)
 
 2. `DifyOnLightsail-stack`という名前のスタックを削除する
+
+１度目の削除操作で，削除が失敗する（IPアドレスは削除されるが，Lightsailインスタンスが残ってしまう）事があるようなので，そのときは，再度削除操作をしてみてください．
 
 ![CloudFormation Stackを削除する](doc/Delete02-Delete-Stack.png)
 
@@ -97,8 +100,9 @@ After that, click the CloudShell icon on the top right of the screen.
 Execute the following commands one line at a time.
 
 ```sh
-git clone https://github.com/langgenius/dify-ai-on-amazon-lightsail.git
-cd dify-ai-on-amazon-lightsail
+git clone https://github.com/rikrikurik/cdk-dify-on-lightsail.git
+cd cdk-dify-on-lightsail
+npm i
 cdk bootstrap
 cdk deploy
 ```
@@ -130,5 +134,7 @@ Access [http://AAA.BBB.CCC.DDD](http://AAA.BBB.CCC.DDD) from your browser.
 ![Open CloudFormation Page](doc/Delete01-Open-CloudFormation.png)
 
 2. Delete Stack named `DifyOnLightsail-stack`
+
+The first deletion operation may fail (the IP address is deleted, but the Lightsail instance remains). If this happens, please try the deletion operation again.
 
 ![Delete CloudFormation Stack](doc/Delete02-Delete-Stack.png)
