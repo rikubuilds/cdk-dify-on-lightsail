@@ -10,7 +10,6 @@ AWSのマネジメントコンソールを使った場合と同等のリソー�
 インフラリソースをCDKでコード化してデプロイすることで，
 
 - 途中の一部操作（SSHキーを作成してインスタンスにログインし，Difyインストールコマンドを実行する）が不要
-- Lightsailサービスのマネジメントコンソールが変わって操作方法が変化してしまった時も，コマンドラインから同等のリソース作成を再現できる
 - リソースが不要になった場合，CloudFormationのページから一括削除できる
 
 などの利点があります．
@@ -31,7 +30,7 @@ AWSアカウントにログインし，使用したいリージョンに切り�
 
 2. デプロイコマンドの実行
 
-下記のコマンドを１行ずつ実行する．
+CloudShellのコンソールで，下記のコマンドを１行ずつ実行する．
 
 ```sh
 git clone https://github.com/langgenius/dify-ai-on-amazon-lightsail.git
@@ -40,7 +39,7 @@ cdk bootstrap
 cdk deploy
 ```
 
-3. 8 -10分ほど待つ
+3. 8 - 10分ほど待つ
 
 （この間に，作成したインスタンスで，Dockerのインストール・DifyのGitHubコードpullとサービス起動が行われています．）
 
@@ -48,7 +47,7 @@ cdk deploy
 
 ![Lightsailのページを開く](doc/JP-03-Open-Lightsail.png)
 
-![Lightsailのページから作成したインスタンスの詳細ページを開く](doc/JP-04-Open-Instance_Details.png)
+![Lightsailのページから作成したインスタンスの詳細ページを開く](doc/JP-04-Open-Instance-Details.png)
 
 ![固定IPアドレスを確認する](doc/JP-05-Check-StaticIP.png)
 
@@ -64,6 +63,12 @@ cdk deploy
 
 This is AWS CDK project to deploy stack to install [Dify](https://github.com/langgenius/dify) on Amazon Lightsail, inspired by [this article (Japanese only)](https://note.com/sangmin/n/nbb4db69784e8) (by @gijigae).
 
+This project executes the same resource creation operations as using the AWS Management Console, but via the command line.
+By codifying and deploying infrastructure resources with CDK, there are benefits such as:
+
+- Some intermediate operations (creating SSH keys, logging into instances, and executing Dify installation commands) are unnecessary
+- When resources are no longer needed, they can be deleted in bulk from the CloudFormation page
+
 Don't worry that if you are not familiar with AWS CDK (or AWS CLI).
 
 You can deploy this stack simply by using AWS CloudShell (free service!).
@@ -76,4 +81,36 @@ Login to your AWS account and switch region to where you want to deploy this sta
 
 After that, click the CloudShell icon on the top right of the screen.
 
+![Open CloudShell](doc/EN-01-CloudShell.png)
+
+2. Execute CDK Deploy Command on CloudShell
+
+Execute the following commands one line at a time.
+
+```sh
+git clone https://github.com/langgenius/dify-ai-on-amazon-lightsail.git
+cd dify-ai-on-amazon-lightsail
+cdk bootstrap
+cdk deploy
+```
+
+3. Wait for 8 -10 minutes
+
+(During this time, Docker installation, pulling Dify's GitHub code, and service startup are being performed on the created instance.)
+
+4. Check the static IP address of the created Lightsail instance and access Dify's frontend from your browser.
+
+![Open Lightsail Console](doc/EN-03-Open-Lightsail.png)
+
+![Open Instance Detail Page](doc/EN-04-Open-Instance-Details.png)
+
+![Check the Static IP Address](doc/EN-05-Check-StaticIP.png)
+
+Access [http://AAA.BBB.CCC.DDD](http://AAA.BBB.CCC.DDD) from your browser.
+
+(Please replace AAA.BBB.CCC.DDD to your static IP address of Lightsail instance.)
+
+**Note that you should use `http` instead of `https`！**
+
+![Access to Dify Frontend](doc/EN-06-Open-Dify.png)
 
