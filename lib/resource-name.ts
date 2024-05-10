@@ -1,19 +1,23 @@
 export class ResourceName {
   public readonly system_name: string;
-  public readonly system_env: string;
 
-  constructor(system_name: string, env: string) {
+  constructor(system_name: string) {
     this.system_name = system_name;
-    this.system_env = env;
   }
 
   private generate(suffix: string): string {
-    return `${this.system_name}-${this.system_env}-${suffix}`;
+    return `${this.system_name}-${suffix}`;
   }
 
-  public stack_name(name: string): string {
-    return this.generate(`${name}-stack`);
+  public stack_name(): string {
+    return this.generate(`stack`);
   }
 
-  
+  public instance_name(suffix?: string): string {
+    return this.generate(suffix ? `instance-${suffix}` : `instance`);
+  }
+
+  public static_ip_name(suffix?: string): string {
+    return this.generate(suffix ? `static-ip-${suffix}` : `static-ip`);
+  }
 }

@@ -1,21 +1,19 @@
 #!/usr/bin/env node
+import { ResourceName } from '../lib/resource-name';
 import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
-import { CdkDifyOnLightsailStack } from '../lib/cdk-dify-on-lightsail-stack';
+import { DifyOnLightsailStack } from '../lib/cdk-dify-on-lightsail-stack';
 
 const app = new cdk.App();
-new CdkDifyOnLightsailStack(app, 'CdkDifyOnLightsailStack', {
-  /* If you don't specify 'env', this stack will be environment-agnostic.
-   * Account/Region-dependent features and context lookups will not work,
-   * but a single synthesized template can be deployed anywhere. */
 
-  /* Uncomment the next line to specialize this stack for the AWS Account
-   * and Region that are implied by the current CLI configuration. */
-  // env: { account: process.env.CDK_DEFAULT_ACCOUNT, region: process.env.CDK_DEFAULT_REGION },
+// Get Context
+const system_name = app.node.tryGetContext("system_name");
+const resource_name = new ResourceName(system_name);
 
-  /* Uncomment the next line if you know exactly what Account and Region you
-   * want to deploy the stack to. */
-  // env: { account: '123456789012', region: 'us-east-1' },
-
-  /* For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html */
+const stack = new DifyOnLightsailStack(app, 'DifyOnLightsailStack', {
+  stackName: resource_name.stack_name(),
+  resourceName: resource_name,
 });
+
+// Tagging resources
+cdk.Tags.of(stack).add("system", system_name);
