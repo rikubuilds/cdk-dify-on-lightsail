@@ -2,7 +2,7 @@
 
 ## 日本語
 
-[こちらの記事](https://note.com/sangmin/n/nbb4db69784e8) (by サンミンさん @gijigae)で紹介されている
+[こちらの記事](https://note.com/sangmin/n/nbb4db69784e8) (by サンミンさん [@gijigae](https://x.com/gijigae/status/1781938880574615626))で紹介されている
 [Dify](https://github.com/langgenius/dify)のAWSへのデプロイ方法を，
 AWS CDKを使ってコード化したものです．
 
@@ -70,7 +70,7 @@ cdk deploy
 
 ## English
 
-This is AWS CDK project to deploy stack to install [Dify](https://github.com/langgenius/dify) on Amazon Lightsail, inspired by [this article (Japanese only)](https://note.com/sangmin/n/nbb4db69784e8) (by @gijigae).
+This is AWS CDK project to deploy stack to install [Dify](https://github.com/langgenius/dify) on Amazon Lightsail, inspired by [this article (Japanese only)](https://note.com/sangmin/n/nbb4db69784e8) (by [@gijigae](https://x.com/gijigae/status/1781938880574615626)).
 
 This project executes the same resource creation operations as using the AWS Management Console, but via the command line.
 By codifying and deploying infrastructure resources with CDK, there are benefits such as:
