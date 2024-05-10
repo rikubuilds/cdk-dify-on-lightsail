@@ -58,6 +58,15 @@ cdk deploy
 
 ![Difyフロントエンドにアクセスする](doc/JP-06-Open-Dify.png)
 
+### 不要になった時のリソース削除方法
+
+1. CloudFormationのページを開く.
+
+![CloudFormationのページを開く](doc/Delete01-Open-CloudFormation.png)
+
+2. `DifyOnLightsail-stack`という名前のスタックを削除する
+
+![CloudFormation Stackを削除する](doc/Delete02-Delete-Stack.png)
 
 ## English
 
@@ -114,3 +123,12 @@ Access [http://AAA.BBB.CCC.DDD](http://AAA.BBB.CCC.DDD) from your browser.
 
 ![Access to Dify Frontend](doc/EN-06-Open-Dify.png)
 
+### How to Delete Deployed Stack?
+
+1. Open CloudFormation Page
+
+![Open CloudFormation Page](doc/Delete01-Open-CloudFormation.png)
+
+2. Delete Stack named `DifyOnLightsail-stack`
+
+![Delete CloudFormation Stack](doc/Delete02-Delete-Stack.png)
