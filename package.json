@@ -1,6 +1,6 @@
 {
   "name": "cdk-dify-on-lightsail",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "bin": {
     "cdk-dify-on-lightsail": "bin/cdk-dify-on-lightsail.js"
   },
